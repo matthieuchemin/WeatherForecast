@@ -16,7 +16,7 @@ class ReadForecastForPosition(
         fun scheduleNextExecution(delayInMillisecond: Long)
     }
 
-    override suspend fun perform(input: Long): Forecast? {
+    override fun perform(input: Long): Forecast? {
         val result = forecastRepository.forecastForLocation(input)
         return when (result) {
             is Success -> {
