@@ -22,7 +22,7 @@ class ForecastRepository(
     }
 
     interface RemoteForecastDataStore {
-        fun getForecastForCityName(cityName: String): Array<Forecast>
+        fun getForecastForLocationId(locationId: Long): Array<Forecast>
     }
 
     interface LocalForecastDataStore {
@@ -34,7 +34,7 @@ class ForecastRepository(
         return try {
             val cityName = localLocationDataStore.getLocationCityNameWithId(locationId)
                     ?: throw IllegalArgumentException("unknown location id")
-            val forecastArray = remoteForecastDataStore.getForecastForCityName(cityName)
+            val forecastArray = remoteForecastDataStore.getForecastForLocationId(locationId)
             if (forecastArray.isNotEmpty()) {
                 localForecastDataStore.saveForecastForLocationId(locationId, forecastArray)
             }
