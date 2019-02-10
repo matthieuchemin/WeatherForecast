@@ -10,7 +10,6 @@ class LocalForecastDataStore(private val forecastDao: ForecastDao) : ForecastRep
     override fun saveForecastForLocationId(locationId: Long, forecastArray: Array<Forecast>) {
         val forecastDatabaseEntityList = forecastArray.map {
             ForecastDatabaseEntity(
-                    id = it.timeStamp,
                     idLocation = locationId,
                     timestamp = it.timeStamp,
                     weather = it.weather,
