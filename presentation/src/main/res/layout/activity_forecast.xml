@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_forecast_padding"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="February 10, 2019"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weather"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Clear"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="clear sky"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="-8 °C"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_min"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_temperature_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="-20 °C"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_max"
+        style="@style/TextAppearance.AppCompat.Small"
+        />
+
+    <TextView
+        android:id="@+id/activity_forecast_temperature_max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="-4 °C"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
+
+</LinearLayout>

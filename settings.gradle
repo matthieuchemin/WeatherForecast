@@ -1,1 +1,1 @@
-include ':app', ':entities', ':domain', ':common-test-tools', ':repositories', ':database', ':common-tools', ':networking'
+include ':app', ':entities', ':domain', ':common-test-tools', ':repositories', ':database', ':common-tools', ':networking', ':presentation'

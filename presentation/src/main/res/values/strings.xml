@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">presentation</string>
+
+    <string name="date">Date</string>
+    <string name="weather">Weather</string>
+    <string name="details">Details</string>
+    <string name="temperature">Temperature</string>
+    <string name="temperature_min">Temperature Min.</string>
+    <string name="temperature_max">Temperature Max.</string>
+
+</resources>
