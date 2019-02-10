@@ -23,6 +23,7 @@ import javax.inject.Singleton
             PresentationModule::class,
             RepositoriesModule::class,
             SchedulingModule::class,
+            TimberModule::class,
             ViewModelBindingModule::class,
             WeatherDomainModule::class,
 
