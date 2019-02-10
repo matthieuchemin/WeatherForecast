@@ -34,7 +34,7 @@ class ForecastActivity : FragmentActivity() {
         setContentView(R.layout.activity_forecast)
 
         forecastViewModel = ViewModelProviders.of(this, viewModelFactory).get(ForecastViewModel::class.java)
-        val locationId = intent.extras.getLong(LOCATION_ID)
+        val locationId = intent.extras?.getLong(LOCATION_ID) ?: throw IllegalStateException("you should start forecast activity with a param $LOCATION_ID")
         forecastViewModel.setLocationId(locationId)
 
         if (savedInstanceState == null) {
