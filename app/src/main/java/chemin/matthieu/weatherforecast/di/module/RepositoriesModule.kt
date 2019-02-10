@@ -13,9 +13,8 @@ class RepositoriesModule {
 
     @Provides
     fun provideForecastRepository(
-            localLocationDataStore: ForecastRepository.LocalLocationDataStore,
             remoteForecastDataStore: ForecastRepository.RemoteForecastDataStore,
             localForecastDataStore: ForecastRepository.LocalForecastDataStore,
             currentTimeStampBuilder: ForecastRepository.CurrentTimeStampBuilder
-    ) = ForecastRepository(localLocationDataStore, remoteForecastDataStore, localForecastDataStore, currentTimeStampBuilder)
+    ) = ForecastRepository(remoteForecastDataStore, localForecastDataStore, currentTimeStampBuilder)
 }

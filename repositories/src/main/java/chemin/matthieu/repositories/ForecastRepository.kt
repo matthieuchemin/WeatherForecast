@@ -12,15 +12,10 @@ import timber.log.Timber
 private const val TAG = "ForecastRepository"
 
 class ForecastRepository(
-        private val localLocationDataStore: LocalLocationDataStore,
         private val remoteForecastDataStore: RemoteForecastDataStore,
         private val localForecastDataStore: LocalForecastDataStore,
         private val currentTimeStampBuilder: CurrentTimeStampBuilder
 ) : ReadForecastForPosition.ForecastRepository {
-
-    interface LocalLocationDataStore {
-        fun getLocationCityNameWithId(locationId: Long): String?
-    }
 
     interface RemoteForecastDataStore {
         fun getForecastForLocationId(locationId: Long): Array<Forecast>
@@ -37,8 +32,6 @@ class ForecastRepository(
 
     override fun forecastForLocation(locationId: Long): Result<Forecast> {
         return try {
-//            val cityName = localLocationDataStore.getLocationCityNameWithId(locationId)
-//                    ?: throw IllegalArgumentException("unknown location id")
             val forecastArray = remoteForecastDataStore.getForecastForLocationId(locationId)
             if (forecastArray.isNotEmpty()) {
                 localForecastDataStore.saveForecastForLocationId(locationId, forecastArray)
