@@ -18,14 +18,14 @@ class ForecastActivity : FragmentActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var forecastViewModel: ForecastViewModel
+    private lateinit var forecastViewModel: ForecastViewModel
 
-    lateinit var forecastDateTextView: TextView
-    lateinit var forecastWeatherTextView: TextView
-    lateinit var forecastDetailTextView: TextView
-    lateinit var forecastTemperatureTextView: TextView
-    lateinit var forecastTemperatureMinTextView: TextView
-    lateinit var forecastTemperatureMaxTextView: TextView
+    private lateinit var forecastDateTextView: TextView
+    private lateinit var forecastWeatherTextView: TextView
+    private lateinit var forecastDetailTextView: TextView
+    private lateinit var forecastTemperatureTextView: TextView
+    private lateinit var forecastTemperatureMinTextView: TextView
+    private lateinit var forecastTemperatureMaxTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
