@@ -5,6 +5,7 @@ import chemin.matthieu.entities.Forecast
 import chemin.matthieu.networking.retrofit.OpenWheatherMapRetrofitService
 import chemin.matthieu.repositories.ForecastRepository
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 private const val TAG = "RemoteForecastDataStore"
 
@@ -18,8 +19,9 @@ class RemoteForecastDataStore(private val openWeatherMapRetrofitService: OpenWhe
                 val responseBody = response.body()
                 responseBody?.let { listForecastRepresentation ->
                     val listForecast = listForecastRepresentation.list.map { forecastRepresentation ->
+                        // we convert api forecast to our forecast object
                         Forecast(
-                                timeStamp = forecastRepresentation.timestamp,
+                                timeStamp = forecastRepresentation.timestamp * TimeUnit.SECONDS.toMillis(1),
                                 weather = forecastRepresentation.weather[0].main,
                                 weatherDescription = forecastRepresentation.weather[0].description,
                                 temperature = forecastRepresentation.mainForecastRepresentation.temperature.toInt(),
