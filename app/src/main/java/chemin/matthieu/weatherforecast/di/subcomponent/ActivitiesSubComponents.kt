@@ -1,5 +1,6 @@
 package chemin.matthieu.weatherforecast.di.subcomponent
 
+import chemin.matthieu.presentation.activity.FavoredLocationsActivity
 import chemin.matthieu.presentation.activity.ForecastActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -9,4 +10,7 @@ interface ActivitiesSubComponents {
 
     @ContributesAndroidInjector
     fun contributesForecastActivity(): ForecastActivity
+
+    @ContributesAndroidInjector
+    fun contributesFavoredLocationsActivity(): FavoredLocationsActivity
 }

@@ -5,5 +5,7 @@ package chemin.matthieu.entities
  */
 data class Location(
         val id: Long,
-        val name: String
+        val name: String,
+        val country: String,
+        val favored: Boolean
 )

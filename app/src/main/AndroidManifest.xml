@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:name=".WeatherApplication"
         >
-        <activity android:name="chemin.matthieu.presentation.activity.ForecastActivity">
+        <activity android:name="chemin.matthieu.presentation.activity.FavoredLocationsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

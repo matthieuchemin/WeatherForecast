@@ -8,4 +8,8 @@
     <string name="temperature_min">Temperature Min.</string>
     <string name="temperature_max">Temperature Max.</string>
 
+    <string name="activity_favored_title">Favored Locations</string>
+
+    <string name="activity_favored_locations_menu_add">Add</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package chemin.matthieu.weatherforecast.di.module
 
 import androidx.lifecycle.ViewModel
+import chemin.matthieu.presentation.viewmodel.FavoredLocationViewModel
 import chemin.matthieu.presentation.viewmodel.ForecastViewModel
 import chemin.matthieu.weatherforecast.di.annotation.ViewModelKey
 import dagger.Binds
@@ -13,5 +14,10 @@ interface ViewModelBindingModule {
     @IntoMap
     @Binds
     @ViewModelKey(ForecastViewModel::class)
-    fun binds(forecastViewModel: ForecastViewModel): ViewModel
+    fun bindsForecast(forecastViewModel: ForecastViewModel): ViewModel
+
+    @IntoMap
+    @Binds
+    @ViewModelKey(FavoredLocationViewModel::class)
+    fun bindsFavoredLocation(favoredLocationViewModel: FavoredLocationViewModel): ViewModel
 }

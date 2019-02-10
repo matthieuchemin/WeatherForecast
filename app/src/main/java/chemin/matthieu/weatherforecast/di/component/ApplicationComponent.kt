@@ -16,9 +16,13 @@ import javax.inject.Singleton
             AndroidSupportInjectionModule::class,
 
             DatabaseModule::class,
+            FavoredDataStoreModule::class,
+            FavoredDomainModule::class,
+            FavoredPresentationModule::class,
             ForecastDataStoreModule::class,
             ForecastPresentationModule::class,
             ForecastRepositoriesModule::class,
+            LocationDataStoreModule::class,
             NetworkingModule::class,
             PresentationModule::class,
             RepositoriesModule::class,
