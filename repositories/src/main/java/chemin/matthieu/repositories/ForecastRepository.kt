@@ -32,8 +32,8 @@ class ForecastRepository(
 
     override fun forecastForLocation(locationId: Long): Result<Forecast> {
         return try {
-            val cityName = localLocationDataStore.getLocationCityNameWithId(locationId)
-                    ?: throw IllegalArgumentException("unknown location id")
+//            val cityName = localLocationDataStore.getLocationCityNameWithId(locationId)
+//                    ?: throw IllegalArgumentException("unknown location id")
             val forecastArray = remoteForecastDataStore.getForecastForLocationId(locationId)
             if (forecastArray.isNotEmpty()) {
                 localForecastDataStore.saveForecastForLocationId(locationId, forecastArray)
