@@ -7,7 +7,7 @@ import chemin.matthieu.repositories.ForecastRepository
 class RemoteForecastDataStore(private val openWeatherMapRetrofitService: OpenWheatherMapRetrofitService) : ForecastRepository.RemoteForecastDataStore {
 
     override fun getForecastForLocationId(locationId: Long): Array<Forecast> {
-        val call = openWeatherMapRetrofitService.getForecast(locationId, "2f3c56f42070ae5fd0f3f0634620c213")
+        val call = openWeatherMapRetrofitService.getForecast(locationId)
         val response = call.execute()
         return if (response.isSuccessful) {
             val responseBody = response.body()
