@@ -2,14 +2,14 @@ package chemin.matthieu.networking.datastore
 
 import chemin.matthieu.commontools.e
 import chemin.matthieu.entities.Forecast
-import chemin.matthieu.networking.retrofit.OpenWheatherMapRetrofitService
+import chemin.matthieu.networking.retrofit.OpenWeatherMapRetrofitService
 import chemin.matthieu.repositories.ForecastRepository
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 private const val TAG = "RemoteForecastDataStore"
 
-class RemoteForecastDataStore(private val openWeatherMapRetrofitService: OpenWheatherMapRetrofitService) : ForecastRepository.RemoteForecastDataStore {
+class RemoteForecastDataStore(private val openWeatherMapRetrofitService: OpenWeatherMapRetrofitService) : ForecastRepository.RemoteForecastDataStore {
 
     override fun getForecastForLocationId(locationId: Long): Array<Forecast> {
         try {

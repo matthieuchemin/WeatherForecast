@@ -1,7 +1,7 @@
 package chemin.matthieu.weatherforecast.di.module
 
 import chemin.matthieu.networking.datastore.RemoteForecastDataStore
-import chemin.matthieu.networking.retrofit.OpenWheatherMapRetrofitService
+import chemin.matthieu.networking.retrofit.OpenWeatherMapRetrofitService
 import chemin.matthieu.weatherforecast.BuildConfig
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -31,10 +31,10 @@ class NetworkingModule {
 
     @Reusable
     @Provides
-    fun provideOpenWeatherRetrofitService(retrofit: Retrofit): OpenWheatherMapRetrofitService =
-            retrofit.create(OpenWheatherMapRetrofitService::class.java)
+    fun provideOpenWeatherRetrofitService(retrofit: Retrofit): OpenWeatherMapRetrofitService =
+            retrofit.create(OpenWeatherMapRetrofitService::class.java)
 
     @Provides
-    fun providesRemoteForecastDataStore(openWheatherMapRetrofitService: OpenWheatherMapRetrofitService) =
-            RemoteForecastDataStore(openWheatherMapRetrofitService)
+    fun providesRemoteForecastDataStore(openWeatherMapRetrofitService: OpenWeatherMapRetrofitService) =
+            RemoteForecastDataStore(openWeatherMapRetrofitService)
 }
