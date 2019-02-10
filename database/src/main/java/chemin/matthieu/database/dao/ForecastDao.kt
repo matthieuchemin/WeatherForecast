@@ -17,7 +17,7 @@ abstract class ForecastDao {
     protected abstract fun writeForecastToDb(forecastArray: List<ForecastDatabaseEntity>)
 
     @Transaction
-    fun clearAndWriteForecast(locationId: Long, forecastArray: List<ForecastDatabaseEntity>) {
+    open fun clearAndWriteForecast(locationId: Long, forecastArray: List<ForecastDatabaseEntity>) {
         clearForecastFromDb(locationId)
         writeForecastToDb(forecastArray)
     }

@@ -8,6 +8,7 @@ import chemin.matthieu.database.entities.ForecastDatabaseEntity
 import chemin.matthieu.database.entities.LocationDatabaseEntity
 
 private const val DATABASE_VERSION = 1
+const val DATABASE_NAME = "WeatherForecast"
 
 @Database(
         entities = [

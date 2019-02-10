@@ -8,6 +8,6 @@ import chemin.matthieu.repositories.ForecastRepository
 @Dao
 abstract class LocationDao : ForecastRepository.LocalLocationDataStore {
 
-    @Query("SELECT ${LocationDatabaseEntity.CITY_NAME} FROM ${LocationDatabaseEntity.TABLE_NAME} WHERE ${LocationDatabaseEntity.ID}=:id")
+    @Query("SELECT ${LocationDatabaseEntity.CITY_NAME} FROM ${LocationDatabaseEntity.TABLE_NAME} WHERE ${LocationDatabaseEntity.ID}=:locationId")
     abstract override fun getLocationCityNameWithId(locationId: Long): String?
 }
