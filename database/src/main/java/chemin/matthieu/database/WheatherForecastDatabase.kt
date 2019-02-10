@@ -1,6 +1,9 @@
 package chemin.matthieu.database
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
+import chemin.matthieu.database.dao.ForecastDao
+import chemin.matthieu.database.dao.LocationDao
 import chemin.matthieu.database.entities.ForecastDatabaseEntity
 import chemin.matthieu.database.entities.LocationDatabaseEntity
 
@@ -13,6 +16,9 @@ private const val DATABASE_VERSION = 1
         ],
         version = DATABASE_VERSION
 )
-class RoomDatabase {
+abstract class WheatherForecastDatabase : RoomDatabase() {
 
+    abstract fun locationDao(): LocationDao
+
+    abstract fun forecastDao(): ForecastDao
 }

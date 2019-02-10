@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = ForecastDatabaseEntity.TABLE_NAME)
 data class ForecastDatabaseEntity(
         @ColumnInfo(name = ID) @PrimaryKey var id: Long,
         @ColumnInfo(name = ID_LOCATION) var idLocation: Long,
@@ -16,6 +16,7 @@ data class ForecastDatabaseEntity(
         @ColumnInfo(name = TEMPERATURE_MAX) var temperatureMax: Int
 ) {
     internal companion object {
+        const val TABLE_NAME = "forecast"
         const val ID = "id"
         const val ID_LOCATION = "id_location"
         const val TIMESTAMP = "timestamp"
