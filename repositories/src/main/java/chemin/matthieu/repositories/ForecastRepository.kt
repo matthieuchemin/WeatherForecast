@@ -13,19 +13,19 @@ private const val TAG = "ForecastRepository"
 
 class ForecastRepository(
         private val localLocationDataStore: LocalLocationDataStore,
-        private val remoteWeatherDataStore: RemoteWeatherDataStore,
-        private val localWeatherDataStore: LocalWeatherDataStore
+        private val remoteForecastDataStore: RemoteForecastDataStore,
+        private val localForecastDataStore: LocalForecastDataStore
 ) : ReadForecastForPosition.ForecastRepository {
 
     interface LocalLocationDataStore {
         fun getLocationCityNameWithId(locationId: Long): String?
     }
 
-    interface RemoteWeatherDataStore {
+    interface RemoteForecastDataStore {
         fun getForecastForCityName(cityName: String): Array<Forecast>
     }
 
-    interface LocalWeatherDataStore {
+    interface LocalForecastDataStore {
         fun saveForecastForLocationId(locationId: Long, forecastArray: Array<Forecast>)
         fun getForecastForLocationId(locationId: Long): Forecast?
     }
@@ -34,11 +34,11 @@ class ForecastRepository(
         return try {
             val cityName = localLocationDataStore.getLocationCityNameWithId(locationId)
                     ?: throw IllegalArgumentException("unknown location id")
-            val forecastArray = remoteWeatherDataStore.getForecastForCityName(cityName)
+            val forecastArray = remoteForecastDataStore.getForecastForCityName(cityName)
             if (forecastArray.isNotEmpty()) {
-                localWeatherDataStore.saveForecastForLocationId(locationId, forecastArray)
+                localForecastDataStore.saveForecastForLocationId(locationId, forecastArray)
             }
-            val forecast = localWeatherDataStore.getForecastForLocationId(locationId)
+            val forecast = localForecastDataStore.getForecastForLocationId(locationId)
             if (forecast != null) {
                 Success(forecast)
             } else {

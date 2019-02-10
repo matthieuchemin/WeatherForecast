@@ -5,7 +5,7 @@ import chemin.matthieu.database.entities.ForecastDatabaseEntity
 import chemin.matthieu.entities.Forecast
 import chemin.matthieu.repositories.ForecastRepository
 
-class LocalForecastDataStore(private val forecastDao: ForecastDao) : ForecastRepository.LocalWeatherDataStore {
+class LocalForecastDataStore(private val forecastDao: ForecastDao) : ForecastRepository.LocalForecastDataStore {
 
     override fun saveForecastForLocationId(locationId: Long, forecastArray: Array<Forecast>) {
         val forecastDatabaseEntityList = forecastArray.map {
