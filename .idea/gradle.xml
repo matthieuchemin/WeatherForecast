@@ -10,8 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common-test-tools" />
+            <option value="$PROJECT_DIR$/common-tools" />
+            <option value="$PROJECT_DIR$/database" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/entities" />
+            <option value="$PROJECT_DIR$/repositories" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

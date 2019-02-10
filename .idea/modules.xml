@@ -5,8 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/WeatherForecast.iml" filepath="$PROJECT_DIR$/WeatherForecast.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-test-tools/common-test-tools.iml" filepath="$PROJECT_DIR$/common-test-tools/common-test-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-tools/common-tools.iml" filepath="$PROJECT_DIR$/common-tools/common-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/entities/entities.iml" filepath="$PROJECT_DIR$/entities/entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/repositories/repositories.iml" filepath="$PROJECT_DIR$/repositories/repositories.iml" />
     </modules>
   </component>
 </project>
