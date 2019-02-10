@@ -23,8 +23,8 @@ class LocalForecastDataStore(private val forecastDao: ForecastDao) : ForecastRep
         forecastDao.clearAndWriteForecast(locationId, forecastDatabaseEntityList)
     }
 
-    override fun getForecastForLocationId(locationId: Long): Forecast? =
-            forecastDao.getForecastFromDb(locationId)?.let {
+    override fun getForecastForLocationId(locationId: Long, afterTimeStamp: Long): Forecast? =
+            forecastDao.getForecastFromDb(locationId, afterTimeStamp)?.let {
                 Forecast(
                         timeStamp = it.timestamp,
                         weather = it.weather,

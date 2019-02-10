@@ -14,7 +14,8 @@ private const val TAG = "ForecastRepository"
 class ForecastRepository(
         private val localLocationDataStore: LocalLocationDataStore,
         private val remoteForecastDataStore: RemoteForecastDataStore,
-        private val localForecastDataStore: LocalForecastDataStore
+        private val localForecastDataStore: LocalForecastDataStore,
+        private val currentTimeStampBuilder: CurrentTimeStampBuilder
 ) : ReadForecastForPosition.ForecastRepository {
 
     interface LocalLocationDataStore {
@@ -27,7 +28,11 @@ class ForecastRepository(
 
     interface LocalForecastDataStore {
         fun saveForecastForLocationId(locationId: Long, forecastArray: Array<Forecast>)
-        fun getForecastForLocationId(locationId: Long): Forecast?
+        fun getForecastForLocationId(locationId: Long, afterTimeStamp: Long): Forecast?
+    }
+
+    interface CurrentTimeStampBuilder {
+        fun buildTimeStampOfTheCurrentDay(): Long
     }
 
     override fun forecastForLocation(locationId: Long): Result<Forecast> {
@@ -38,7 +43,8 @@ class ForecastRepository(
             if (forecastArray.isNotEmpty()) {
                 localForecastDataStore.saveForecastForLocationId(locationId, forecastArray)
             }
-            val forecast = localForecastDataStore.getForecastForLocationId(locationId)
+            val currentDayTimeStamp = currentTimeStampBuilder.buildTimeStampOfTheCurrentDay()
+            val forecast = localForecastDataStore.getForecastForLocationId(locationId, currentDayTimeStamp)
             if (forecast != null) {
                 Success(forecast)
             } else {

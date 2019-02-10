@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 class ForecastPresentationModule {
 
     @Provides
-    fun provideDateFormat(): DateFormat = SimpleDateFormat.getDateInstance()
+    fun provideDateFormat(): DateFormat = DateFormat.getDateTimeInstance()
 
     @Provides
     fun provideDisplayForecastMapper(dateFormat: DateFormat) = DisplayForecastMapper(dateFormat)
