@@ -39,6 +39,10 @@ class FavoredLocationsActivity : DaggerAppCompatActivity() {
 
         favoredLocationViewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoredLocationViewModel::class.java)
         favoredLocationViewModel.favoredLocation.observe(this, Observer { showLocation(it) })
+    }
+
+    override fun onResume() {
+        super.onResume()
         favoredLocationViewModel.readFavoredLocation()
     }
 
