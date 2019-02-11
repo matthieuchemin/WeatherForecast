@@ -14,7 +14,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.ext.junit.runners.AndroidJUnit4"
 
         buildConfigField "String", "OPEN_WEATHER_BASE_URL", "\"https://api.openweathermap.org/data/2.5/\""
     }
@@ -49,8 +49,8 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation "androidx.test.ext:junit:1.1.0"
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
 
 task addLocations << {
