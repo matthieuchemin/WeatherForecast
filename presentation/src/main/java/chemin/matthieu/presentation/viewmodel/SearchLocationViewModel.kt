@@ -15,15 +15,21 @@ class SearchLocationViewModel(private val searchLocation: SearchLocation) : Scop
     val searchResult: LiveData<List<Location>>
         get() = _searchResults
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
+
     private var currentJob: Job? = null
 
     fun search(search: String) {
         currentJob?.cancel()
         currentJob = launch {
+            _loading.value = true
             val results = withContext(Dispatchers.IO) {
                 searchLocation.perform(search)
             }
             _searchResults.value = results
+            _loading.value = false
             currentJob = null
         }
     }
