@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/networking" />
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/repositories" />
+            <option value="$PROJECT_DIR$/scheduling" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
