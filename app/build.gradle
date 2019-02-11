@@ -43,6 +43,7 @@ dependencies {
     implementation project(':networking')
     implementation project(':presentation')
     implementation project(':database')
+    implementation project(':scheduling')
 
     testImplementation 'junit:junit:4.12'
 
