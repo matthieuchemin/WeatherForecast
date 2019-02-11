@@ -1,10 +1,10 @@
-package chemin.matthieu.database
+package chemin.matthieu.database.dao
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import chemin.matthieu.database.dao.LocationDao
+import chemin.matthieu.database.WheatherForecastDatabase
 import chemin.matthieu.database.entities.LocationDatabaseEntity
 import org.junit.After
 import org.junit.Assert

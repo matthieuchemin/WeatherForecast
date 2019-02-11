@@ -12,7 +12,7 @@ class LocationWriter(private val locationJsonReader: LocationJsonReader, private
         assetManager.open(LOCATIONS_FILE_NAME).use { inputStream ->
             InputStreamReader(inputStream).use { inputStreamReader ->
                 JsonReader(inputStreamReader).use { jsonReader ->
-                    jsonReader.isLenient = true // TODO this is because our json is badly formatted
+                    jsonReader.isLenient = true // TODO this is because our json is badly formatted (and this is not even working properly)
                     locationJsonReader.readLocationArray(jsonReader)
                     jsonReader.close()
                 }
