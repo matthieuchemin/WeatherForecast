@@ -13,9 +13,12 @@ class SyncScheduler {
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
 
-        val syncBuilder = PeriodicWorkRequest.Builder(SyncWorker::class.java, 6, TimeUnit.SECONDS)
+        val targetPeriod = TimeUnit.SECONDS.toMillis(6)
+        val period = Math.max(targetPeriod, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS)
+
+        val syncBuilder = PeriodicWorkRequest.Builder(SyncWorker::class.java, period, TimeUnit.MILLISECONDS)
                 .addTag(SYNC_TASK_TAG)
-//                .setConstraints(syncConstraints)
+                .setConstraints(syncConstraints)
 
         val syncWork = syncBuilder.build()
 
