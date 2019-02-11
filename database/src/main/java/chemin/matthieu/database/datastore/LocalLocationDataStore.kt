@@ -13,7 +13,7 @@ class LocalLocationDataStore(
         if (locationDao.countLocation() == 0) {
             locationWriter.writeLocationToDatabase()
         }
-        return locationDao.searchLocation(search).map {
+        return locationDao.searchLocation("%$search%").map {
             Location(
                     id = it.id,
                     name = it.cityName ?: "-",
