@@ -52,6 +52,7 @@ class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         locationList?.get(position)?.let {
             holder.locationId = it.id
+            holder.favored = it.favored
             holder.locationNameTextView.text = it.name
             holder.locationCountryTextView.text = it.country
             holder.locationFavoredImageView.setImageResource(

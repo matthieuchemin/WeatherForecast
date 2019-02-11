@@ -77,9 +77,7 @@ class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher, Location
 
     override fun onFavoredLocationClick(locationId: Long) = searchLocationViewModel.favoredLocation(locationId)
 
-    override fun onUnFavoredLocationClick(locationId: Long) {
-        throw RuntimeException("method not implemented yet")
-    }
+    override fun onUnFavoredLocationClick(locationId: Long) = searchLocationViewModel.unFavoredLocation(locationId)
 
     override fun onLocationClick(locationId: Long) {
         val intent = Intent(this, ForecastActivity::class.java)
