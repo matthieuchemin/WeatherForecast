@@ -1,12 +1,15 @@
 package chemin.matthieu.presentation.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import chemin.matthieu.commontools.exhaustive
 import chemin.matthieu.entities.Location
 import chemin.matthieu.presentation.R
 import chemin.matthieu.presentation.adapter.LocationAdapter
@@ -43,6 +46,16 @@ class FavoredLocationsActivity : DaggerAppCompatActivity() {
         menuInflater.inflate(R.menu.activity_favored_locations_menu, menu)
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+            when (item?.itemId) {
+                R.id.activity_favored_location_menu_add -> {
+                    val intent = Intent(this, SearchLocationsActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
+            }.exhaustive
 
     private fun showLocation(locations: List<Location>) {
         locationAdapter.locationList = locations

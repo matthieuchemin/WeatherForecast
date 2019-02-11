@@ -9,6 +9,7 @@
     <string name="temperature_max">Temperature Max.</string>
 
     <string name="activity_favored_title">Favored Locations</string>
+    <string name="activity_search_title">Search Locations</string>
 
     <string name="activity_favored_locations_menu_add">Add</string>
 

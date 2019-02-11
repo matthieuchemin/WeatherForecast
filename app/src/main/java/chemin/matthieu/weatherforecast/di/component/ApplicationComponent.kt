@@ -29,7 +29,7 @@ import javax.inject.Singleton
             SchedulingModule::class,
             TimberModule::class,
             ViewModelBindingModule::class,
-            WeatherDomainModule::class,
+            ForecastDomainModule::class,
 
             ActivitiesSubComponents::class
         ]
