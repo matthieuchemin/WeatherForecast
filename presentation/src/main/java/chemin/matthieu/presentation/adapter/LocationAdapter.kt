@@ -13,6 +13,7 @@ class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter
 
     class ViewHolder(view: View, private val onItemClickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
         var locationId: Long = 0
+        var favored: Boolean = false
         val locationNameTextView: TextView
         val locationCountryTextView: TextView
         val locationFavoredImageView: ImageView
@@ -21,13 +22,20 @@ class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter
             locationCountryTextView = view.findViewById(R.id.row_location_country)
             locationFavoredImageView = view.findViewById(R.id.row_location_favored)
             locationFavoredImageView.setOnClickListener {
-                onItemClickListener?.onFavoredLocationClick(locationId)
+                if (!favored) {
+                    onItemClickListener?.onFavoredLocationClick(locationId)
+                } else {
+                    onItemClickListener?.onUnFavoredLocationClick(locationId)
+                }
             }
+            view.setOnClickListener { onItemClickListener?.onLocationClick(locationId) }
         }
     }
 
     interface OnItemClickListener {
         fun onFavoredLocationClick(locationId: Long)
+        fun onUnFavoredLocationClick(locationId: Long)
+        fun onLocationClick(locationId: Long)
     }
 
     var onItemClickListener: OnItemClickListener? = null

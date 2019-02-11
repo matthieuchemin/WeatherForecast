@@ -21,6 +21,8 @@
         </activity>
 
         <activity android:name="chemin.matthieu.presentation.activity.SearchLocationsActivity"/>
+
+        <activity android:name="chemin.matthieu.presentation.activity.ForecastActivity"/>
     </application>
 
 </manifest>

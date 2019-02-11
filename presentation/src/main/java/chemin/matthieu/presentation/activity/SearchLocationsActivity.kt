@@ -1,5 +1,6 @@
 package chemin.matthieu.presentation.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -75,4 +76,14 @@ class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher, Location
     }
 
     override fun onFavoredLocationClick(locationId: Long) = searchLocationViewModel.favoredLocation(locationId)
+
+    override fun onUnFavoredLocationClick(locationId: Long) {
+        throw RuntimeException("method not implemented yet")
+    }
+
+    override fun onLocationClick(locationId: Long) {
+        val intent = Intent(this, ForecastActivity::class.java)
+        intent.putExtra(ForecastActivity.LOCATION_ID, locationId)
+        startActivity(intent)
+    }
 }

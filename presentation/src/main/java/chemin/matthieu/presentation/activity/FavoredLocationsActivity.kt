@@ -17,7 +17,7 @@ import chemin.matthieu.presentation.viewmodel.FavoredLocationViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class FavoredLocationsActivity : DaggerAppCompatActivity() {
+class FavoredLocationsActivity : DaggerAppCompatActivity(), LocationAdapter.OnItemClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -29,6 +29,8 @@ class FavoredLocationsActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        locationAdapter.onItemClickListener = this
 
         setContentView(R.layout.activity_favored_location)
         val recyclerView: RecyclerView = findViewById(R.id.activity_favored_location_recycler_view)
@@ -64,5 +66,19 @@ class FavoredLocationsActivity : DaggerAppCompatActivity() {
     private fun showLocation(locations: List<Location>) {
         locationAdapter.locationList = locations
         locationAdapter.notifyDataSetChanged()
+    }
+
+    override fun onFavoredLocationClick(locationId: Long) {
+        throw RuntimeException("method not implemented yet")
+    }
+
+    override fun onUnFavoredLocationClick(locationId: Long) {
+        throw RuntimeException("method not implemented yet")
+    }
+
+    override fun onLocationClick(locationId: Long) {
+        val intent = Intent(this, ForecastActivity::class.java)
+        intent.putExtra(ForecastActivity.LOCATION_ID, locationId)
+        startActivity(intent)
     }
 }
