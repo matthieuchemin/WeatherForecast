@@ -5,6 +5,7 @@ import chemin.matthieu.scheduling.worker.SyncWorker
 import java.util.concurrent.TimeUnit
 
 private const val SYNC_TASK_TAG = "sync_task"
+private const val WORK_NAME = "sync_work"
 
 class SyncScheduler {
 
@@ -22,7 +23,7 @@ class SyncScheduler {
 
         val syncWork = syncBuilder.build()
 
-        WorkManager.getInstance().enqueueUniquePeriodicWork("toto", ExistingPeriodicWorkPolicy.REPLACE, syncWork)
+        WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_NAME, ExistingPeriodicWorkPolicy.REPLACE, syncWork)
     }
 
 }
