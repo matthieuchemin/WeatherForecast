@@ -1,9 +1,6 @@
 package chemin.matthieu.weatherforecast.di.module
 
-import chemin.matthieu.domain.FavoredLocation
-import chemin.matthieu.domain.ReadFavoredLocation
-import chemin.matthieu.domain.SearchLocation
-import chemin.matthieu.domain.UnFavoredLocation
+import chemin.matthieu.domain.*
 import dagger.Module
 import dagger.Provides
 
@@ -26,7 +23,12 @@ class FavoredDomainModule {
     ) = FavoredLocation(locationRepository)
 
     @Provides
-    fun providesUnFavoredLocation(
-            locationRepository: UnFavoredLocation.LocationRepository
-    ) = UnFavoredLocation(locationRepository)
+    fun providesUnFavoredFromSearchLocation(
+            locationFromSearchRepository: UnFavoredLocationFromSearch.LocationRepository
+    ) = UnFavoredLocationFromSearch(locationFromSearchRepository)
+
+    @Provides
+    fun providesUnFavoredFromFavoredLocation(
+            locationFromFavoredRepository: UnFavoredLocationFromFavored.LocationRepository
+    ) = UnFavoredLocationFromFavored(locationFromFavoredRepository)
 }

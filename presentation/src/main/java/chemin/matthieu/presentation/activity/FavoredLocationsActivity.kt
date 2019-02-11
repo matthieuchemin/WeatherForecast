@@ -4,18 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import chemin.matthieu.commontools.exhaustive
+import chemin.matthieu.commontools.w
 import chemin.matthieu.entities.Location
 import chemin.matthieu.presentation.R
 import chemin.matthieu.presentation.adapter.LocationAdapter
 import chemin.matthieu.presentation.viewmodel.FavoredLocationViewModel
 import dagger.android.support.DaggerAppCompatActivity
+import timber.log.Timber
 import javax.inject.Inject
+
+private const val TAG = "FavoredLocationsActivity"
 
 class FavoredLocationsActivity : DaggerAppCompatActivity(), LocationAdapter.OnItemClickListener {
 
@@ -69,12 +74,11 @@ class FavoredLocationsActivity : DaggerAppCompatActivity(), LocationAdapter.OnIt
     }
 
     override fun onFavoredLocationClick(locationId: Long) {
-        throw RuntimeException("method not implemented yet")
+        Toast.makeText(this, "You should not be able to see location that are not favored here !!", Toast.LENGTH_SHORT).show()
+        Timber.w(TAG, "Location that is not favored present in favored activity ?!")
     }
 
-    override fun onUnFavoredLocationClick(locationId: Long) {
-        throw RuntimeException("method not implemented yet")
-    }
+    override fun onUnFavoredLocationClick(locationId: Long) = favoredLocationViewModel.unfavoredLocation(locationId)
 
     override fun onLocationClick(locationId: Long) {
         val intent = Intent(this, ForecastActivity::class.java)

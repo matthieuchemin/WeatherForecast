@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import chemin.matthieu.domain.FavoredLocation
 import chemin.matthieu.domain.SearchLocation
-import chemin.matthieu.domain.UnFavoredLocation
+import chemin.matthieu.domain.UnFavoredLocationFromSearch
 import chemin.matthieu.entities.Location
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 class SearchLocationViewModel(
         private val searchLocation: SearchLocation,
         private val favoredLocation: FavoredLocation,
-        private val unFavoredLocation: UnFavoredLocation
+        private val unFavoredLocationFromSearch: UnFavoredLocationFromSearch
 ) : ScopedViewModel() {
 
     private var search: String = ""
@@ -55,7 +55,7 @@ class SearchLocationViewModel(
     fun unFavoredLocation(locationId: Long) {
         launch {
             val results = withContext(Dispatchers.IO) {
-                unFavoredLocation.perform(Pair(locationId, search))
+                unFavoredLocationFromSearch.perform(Pair(locationId, search))
             }
             _searchResults.value = results
         }

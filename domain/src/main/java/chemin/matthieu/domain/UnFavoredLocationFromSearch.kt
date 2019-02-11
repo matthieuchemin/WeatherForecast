@@ -2,7 +2,7 @@ package chemin.matthieu.domain
 
 import chemin.matthieu.entities.Location
 
-class UnFavoredLocation(private val locationRepository: LocationRepository) : UseCase<Pair<Long, String>, List<Location>>() {
+class UnFavoredLocationFromSearch(private val locationRepository: LocationRepository) : UseCase<Pair<Long, String>, List<Location>>() {
 
     interface LocationRepository {
         fun favoredLocation(locationId: Long, favored: Boolean)

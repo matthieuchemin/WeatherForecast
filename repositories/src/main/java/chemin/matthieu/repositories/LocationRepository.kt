@@ -1,9 +1,6 @@
 package chemin.matthieu.repositories
 
-import chemin.matthieu.domain.FavoredLocation
-import chemin.matthieu.domain.ReadFavoredLocation
-import chemin.matthieu.domain.SearchLocation
-import chemin.matthieu.domain.UnFavoredLocation
+import chemin.matthieu.domain.*
 import chemin.matthieu.entities.Location
 
 
@@ -11,7 +8,8 @@ class LocationRepository(private val localLocationDataStore: LocalFavoredLocatio
         ReadFavoredLocation.FavoredLocationRepository,
         SearchLocation.LocationRepository,
         FavoredLocation.LocationRepository,
-        UnFavoredLocation.LocationRepository
+        UnFavoredLocationFromSearch.LocationRepository,
+        UnFavoredLocationFromFavored.LocationRepository
 {
 
     interface LocalFavoredLocationDataStore {
