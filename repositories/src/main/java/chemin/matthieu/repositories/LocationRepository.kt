@@ -9,13 +9,14 @@ class LocationRepository(private val localLocationDataStore: LocalFavoredLocatio
         SearchLocation.LocationRepository,
         FavoredLocation.LocationRepository,
         UnFavoredLocationFromSearch.LocationRepository,
-        UnFavoredLocationFromFavored.LocationRepository
+        UnFavoredLocationFromFavored.LocationRepository,
+        ReadLocationName.LocationRepository
 {
-
     interface LocalFavoredLocationDataStore {
         fun getFavoredLocations(): List<Location>
         fun searchFavoredLocations(search: String): List<Location>
         fun favoredLocation(locationId: Long, favored: Boolean)
+        fun getLocationName(locationId: Long): String
     }
 
     override fun getFavoredLocations(): List<Location> = localLocationDataStore.getFavoredLocations()
@@ -24,4 +25,6 @@ class LocationRepository(private val localLocationDataStore: LocalFavoredLocatio
 
     override fun favoredLocation(locationId: Long, favored: Boolean) =
             localLocationDataStore.favoredLocation(locationId, favored)
+
+    override fun readLocationName(locationId: Long) = localLocationDataStore.getLocationName(locationId)
 }

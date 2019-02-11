@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import chemin.matthieu.commontools.d
 import chemin.matthieu.domain.ReadForecastForPosition
+import chemin.matthieu.domain.ReadLocationName
 import chemin.matthieu.entities.Forecast
 import chemin.matthieu.presentation.model.DisplayForecast
 import chemin.matthieu.presentation.model.DisplayForecastMapper
@@ -16,6 +17,7 @@ private const val TAG = "ForecastViewModel"
 
 class ForecastViewModel(
         private val readForcastForPosition: ReadForecastForPosition,
+        private val readLocationName: ReadLocationName,
         private val displayForecastMapper: DisplayForecastMapper
 ) : ScopedViewModel() {
 
@@ -23,10 +25,20 @@ class ForecastViewModel(
     val forecast: LiveData<DisplayForecast>
         get() = _forecast
 
-    private var idLocation : Long = 0
+    private val _locationName = MutableLiveData<String>()
+    val locationName: LiveData<String>
+        get() = _locationName
+
+    private var idLocation: Long = 0
 
     fun setLocationId(idLocation: Long) {
         this.idLocation = idLocation
+        launch {
+            val name = withContext(Dispatchers.IO) {
+                readLocationName.perform(idLocation)
+            }
+            _locationName.value = name
+        }
     }
 
     fun refreshForecast() {

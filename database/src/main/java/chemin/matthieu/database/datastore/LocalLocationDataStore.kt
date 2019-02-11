@@ -10,6 +10,8 @@ class LocalLocationDataStore(
         private val locationWriter: LocationWriter
 ) : LocationRepository.LocalFavoredLocationDataStore {
 
+    override fun getLocationName(locationId: Long) = locationDao.getLocationCityNameWithId(locationId) ?: "-"
+
     override fun favoredLocation(locationId: Long, favored: Boolean) {
         locationDao.favoredLocation(locationId, favored)
     }

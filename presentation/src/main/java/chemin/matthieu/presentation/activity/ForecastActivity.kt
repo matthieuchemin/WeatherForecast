@@ -11,9 +11,10 @@ import chemin.matthieu.presentation.R
 import chemin.matthieu.presentation.model.DisplayForecast
 import chemin.matthieu.presentation.viewmodel.ForecastViewModel
 import dagger.android.AndroidInjection
+import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class ForecastActivity : FragmentActivity() {
+class ForecastActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,9 +49,8 @@ class ForecastActivity : FragmentActivity() {
             forecastViewModel.refreshForecast()
         }
 
-        forecastViewModel.forecast.observe(this, Observer {
-            showForecast(it)
-        })
+        forecastViewModel.forecast.observe(this, Observer { showForecast(it) })
+        forecastViewModel.locationName.observe(this, Observer { showLocationName(it) })
     }
 
     private fun showForecast(displayForecast: DisplayForecast) {
@@ -60,6 +60,10 @@ class ForecastActivity : FragmentActivity() {
         forecastTemperatureTextView.text = displayForecast.temperature
         forecastTemperatureMinTextView.text = displayForecast.temperatureMin
         forecastTemperatureMaxTextView.text = displayForecast.temperatureMax
+    }
+
+    private fun showLocationName(locationName: String) {
+        title = locationName
     }
 
     internal companion object {

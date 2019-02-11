@@ -1,6 +1,7 @@
 package chemin.matthieu.weatherforecast.di.module
 
 import chemin.matthieu.domain.ReadForecastForPosition
+import chemin.matthieu.domain.ReadLocationName
 import chemin.matthieu.presentation.model.DisplayForecastMapper
 import chemin.matthieu.presentation.viewmodel.ForecastViewModel
 import dagger.Module
@@ -20,9 +21,11 @@ class ForecastPresentationModule {
     @Provides
     fun provideForecastViewModel(
             readForecastForPosition: ReadForecastForPosition,
+            readLocationName: ReadLocationName,
             displayForecastMapper: DisplayForecastMapper
     ) = ForecastViewModel(
             readForecastForPosition,
+            readLocationName,
             displayForecastMapper
     )
 }
