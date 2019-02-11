@@ -30,4 +30,9 @@ abstract class LocationDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(location: LocationDatabaseEntity)
+
+    @Query("UPDATE ${LocationDatabaseEntity.TABLE_NAME} " +
+            "SET ${LocationDatabaseEntity.FAVORED}=:favored " +
+            "WHERE ${LocationDatabaseEntity.ID}=:locationId")
+    abstract fun favoredLocation(locationId: Long, favored: Boolean)
 }

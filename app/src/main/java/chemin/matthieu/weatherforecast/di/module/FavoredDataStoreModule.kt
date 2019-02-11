@@ -1,5 +1,6 @@
 package chemin.matthieu.weatherforecast.di.module
 
+import chemin.matthieu.domain.FavoredLocation
 import chemin.matthieu.domain.ReadFavoredLocation
 import chemin.matthieu.domain.SearchLocation
 import chemin.matthieu.repositories.LocationRepository
@@ -14,4 +15,7 @@ interface FavoredDataStoreModule {
 
     @Binds
     fun bindsSearchLocationRepository(locationRepository: LocationRepository): SearchLocation.LocationRepository
+
+    @Binds
+    fun bindsFavoredLocationRepository(locationRepository: LocationRepository): FavoredLocation.LocationRepository
 }

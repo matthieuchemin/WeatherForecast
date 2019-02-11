@@ -9,6 +9,11 @@ class LocalLocationDataStore(
         private val locationDao: LocationDao,
         private val locationWriter: LocationWriter
 ) : LocationRepository.LocalFavoredLocationDataStore {
+
+    override fun favoredLocation(locationId: Long, favored: Boolean) {
+        locationDao.favoredLocation(locationId, favored)
+    }
+
     override fun searchFavoredLocations(search: String): List<Location> {
         if (locationDao.countLocation() == 0) {
             locationWriter.writeLocationToDatabase()

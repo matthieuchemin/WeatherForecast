@@ -2,6 +2,7 @@ package chemin.matthieu.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import chemin.matthieu.domain.FavoredLocation
 import chemin.matthieu.domain.SearchLocation
 import chemin.matthieu.entities.Location
 import kotlinx.coroutines.Dispatchers
@@ -9,7 +10,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SearchLocationViewModel(private val searchLocation: SearchLocation) : ScopedViewModel() {
+class SearchLocationViewModel(
+        private val searchLocation: SearchLocation,
+        private val favoredLocation: FavoredLocation
+) : ScopedViewModel() {
+
+    private var search: String = ""
 
     private val _searchResults = MutableLiveData<List<Location>>()
     val searchResult: LiveData<List<Location>>
@@ -22,6 +28,7 @@ class SearchLocationViewModel(private val searchLocation: SearchLocation) : Scop
     private var currentJob: Job? = null
 
     fun search(search: String) {
+        this.search = search
         currentJob?.cancel()
         currentJob = launch {
             _loading.value = true
@@ -31,6 +38,15 @@ class SearchLocationViewModel(private val searchLocation: SearchLocation) : Scop
             _searchResults.value = results
             _loading.value = false
             currentJob = null
+        }
+    }
+
+    fun favoredLocation(locationId: Long) {
+        launch {
+            val results = withContext(Dispatchers.IO) {
+                favoredLocation.perform(Pair(locationId, search))
+            }
+            _searchResults.value = results
         }
     }
 

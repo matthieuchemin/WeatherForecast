@@ -1,5 +1,6 @@
 package chemin.matthieu.weatherforecast.di.module
 
+import chemin.matthieu.domain.FavoredLocation
 import chemin.matthieu.domain.ReadFavoredLocation
 import chemin.matthieu.domain.SearchLocation
 import chemin.matthieu.presentation.viewmodel.FavoredLocationViewModel
@@ -14,5 +15,6 @@ class FavoredPresentationModule {
     fun providesFavoredViewModel(readFavoredLocation: ReadFavoredLocation) = FavoredLocationViewModel(readFavoredLocation)
 
     @Provides
-    fun providesSearchViewModel(searchLocation: SearchLocation) = SearchLocationViewModel(searchLocation)
+    fun providesSearchViewModel(searchLocation: SearchLocation, favoredLocation: FavoredLocation) =
+            SearchLocationViewModel(searchLocation, favoredLocation)
 }

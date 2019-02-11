@@ -20,7 +20,7 @@ import chemin.matthieu.presentation.viewmodel.SearchLocationViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher {
+class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher, LocationAdapter.OnItemClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,6 +34,8 @@ class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        locationAdapter.onItemClickListener = this
 
         setContentView(R.layout.activity_search_location)
         val recyclerView: RecyclerView = findViewById(R.id.activity_search_location_recycler_view)
@@ -71,4 +73,6 @@ class SearchLocationsActivity : DaggerAppCompatActivity(), TextWatcher {
     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
         // nothing to be done
     }
+
+    override fun onFavoredLocationClick(locationId: Long) = searchLocationViewModel.favoredLocation(locationId)
 }

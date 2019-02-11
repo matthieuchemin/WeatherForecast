@@ -11,7 +11,7 @@ import chemin.matthieu.presentation.R
 
 class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter<LocationAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, private val onItemClickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
         var locationId: Long = 0
         val locationNameTextView: TextView
         val locationCountryTextView: TextView
@@ -20,8 +20,17 @@ class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter
             locationNameTextView = view.findViewById(R.id.row_location_name)
             locationCountryTextView = view.findViewById(R.id.row_location_country)
             locationFavoredImageView = view.findViewById(R.id.row_location_favored)
+            locationFavoredImageView.setOnClickListener {
+                onItemClickListener?.onFavoredLocationClick(locationId)
+            }
         }
     }
+
+    interface OnItemClickListener {
+        fun onFavoredLocationClick(locationId: Long)
+    }
+
+    var onItemClickListener: OnItemClickListener? = null
 
     var locationList: List<Location>? = null
 
@@ -29,7 +38,7 @@ class LocationAdapter(val layoutInflater: LayoutInflater) : RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = layoutInflater.inflate(R.layout.row_location, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
