@@ -1,10 +1,7 @@
 package chemin.matthieu.repositories
 
 import chemin.matthieu.commontools.e
-import chemin.matthieu.domain.Failure
-import chemin.matthieu.domain.ReadForecastForPosition
-import chemin.matthieu.domain.Result
-import chemin.matthieu.domain.Success
+import chemin.matthieu.domain.*
 import chemin.matthieu.entities.Forecast
 import timber.log.Timber
 
@@ -15,7 +12,7 @@ class ForecastRepository(
         private val remoteForecastDataStore: RemoteForecastDataStore,
         private val localForecastDataStore: LocalForecastDataStore,
         private val currentTimeStampBuilder: CurrentTimeStampBuilder
-) : ReadForecastForPosition.ForecastRepository {
+) : ReadForecastForPosition.ForecastRepository, ReadForecastForAllFavoredLocation.ForecastRepository {
 
     interface RemoteForecastDataStore {
         fun getForecastForLocationId(locationId: Long): Array<Forecast>
@@ -47,5 +44,10 @@ class ForecastRepository(
             Timber.e(TAG, e)
             Failure()
         }
+    }
+
+    override fun readForecastForLocation(locationId: Long): Forecast? {
+        val currentDayTimeStamp = currentTimeStampBuilder.buildTimeStampOfTheCurrentDay()
+        return localForecastDataStore.getForecastForLocationId(locationId, currentDayTimeStamp)
     }
 }

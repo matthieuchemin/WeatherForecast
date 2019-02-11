@@ -10,7 +10,8 @@ class LocationRepository(private val localLocationDataStore: LocalFavoredLocatio
         FavoredLocation.LocationRepository,
         UnFavoredLocationFromSearch.LocationRepository,
         UnFavoredLocationFromFavored.LocationRepository,
-        ReadLocationName.LocationRepository
+        ReadLocationName.LocationRepository,
+        ReadForecastForAllFavoredLocation.LocationRepository
 {
     interface LocalFavoredLocationDataStore {
         fun getFavoredLocations(): List<Location>

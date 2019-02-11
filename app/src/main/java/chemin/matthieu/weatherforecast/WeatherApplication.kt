@@ -36,6 +36,7 @@ class WeatherApplication : DaggerApplication() {
                 }
         )
         syncScheduler.scheduleSync()
+        syncScheduler.scheduleNotifications()
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> =

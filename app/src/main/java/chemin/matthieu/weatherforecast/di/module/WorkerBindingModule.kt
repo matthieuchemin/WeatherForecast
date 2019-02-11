@@ -1,6 +1,7 @@
 package chemin.matthieu.weatherforecast.di.module
 
 import androidx.work.Worker
+import chemin.matthieu.scheduling.worker.NotificationWorker
 import chemin.matthieu.scheduling.worker.SyncWorker
 import chemin.matthieu.weatherforecast.di.annotation.WorkerKey
 import dagger.Binds
@@ -14,4 +15,9 @@ interface WorkerBindingModule {
     @IntoMap
     @WorkerKey(SyncWorker::class)
     fun bindSyncWorker(worker: SyncWorker): Worker
+
+    @Binds
+    @IntoMap
+    @WorkerKey(NotificationWorker::class)
+    fun bindsNotificationWorker(worker: NotificationWorker): Worker
 }

@@ -16,6 +16,7 @@ import javax.inject.Singleton
         modules = [
             AndroidSupportInjectionModule::class,
 
+            ApplicationModule::class,
             DatabaseModule::class,
             FavoredDataStoreModule::class,
             FavoredDomainModule::class,
@@ -26,6 +27,7 @@ import javax.inject.Singleton
             ForecastRepositoriesModule::class,
             LocationDataStoreModule::class,
             NetworkingModule::class,
+            NotificationDomainModule::class,
             PresentationModule::class,
             RepositoriesModule::class,
             SchedulingModule::class,

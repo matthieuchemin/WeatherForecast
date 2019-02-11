@@ -1,13 +1,15 @@
 package chemin.matthieu.scheduling.scheduler
 
 import androidx.work.*
+import chemin.matthieu.domain.NextNotificationTime
+import chemin.matthieu.scheduling.worker.NotificationWorker
 import chemin.matthieu.scheduling.worker.SyncWorker
 import java.util.concurrent.TimeUnit
 
 private const val SYNC_TASK_TAG = "sync_task"
 private const val WORK_NAME = "sync_work"
 
-class SyncScheduler {
+class SyncScheduler(private val nextNotificationTime: NextNotificationTime) {
 
     fun scheduleSync() {
         val syncConstraints = Constraints.Builder()
@@ -24,6 +26,17 @@ class SyncScheduler {
         val syncWork = syncBuilder.build()
 
         WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_NAME, ExistingPeriodicWorkPolicy.REPLACE, syncWork)
+    }
+
+    fun scheduleNotifications() {
+        val time = System.currentTimeMillis()
+        val nextTime = nextNotificationTime.perform(time)
+        val delay = nextTime - time
+
+        val notificationBuilder = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
+                .setInitialDelay(delay, TimeUnit.MILLISECONDS)
+
+        WorkManager.getInstance().enqueue(notificationBuilder.build())
     }
 
 }
