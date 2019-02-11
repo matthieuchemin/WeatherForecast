@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="chemin.matthieu.weatherforecast"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -23,6 +24,12 @@
         <activity android:name="chemin.matthieu.presentation.activity.SearchLocationsActivity"/>
 
         <activity android:name="chemin.matthieu.presentation.activity.ForecastActivity"/>
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false"
+            tools:node="remove"/>
     </application>
 
 </manifest>

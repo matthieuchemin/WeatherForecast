@@ -1,6 +1,7 @@
 package chemin.matthieu.weatherforecast.di.module
 
 import chemin.matthieu.domain.ReadForecastForPosition
+import chemin.matthieu.scheduling.scheduler.SyncScheduler
 import dagger.Module
 import dagger.Provides
 
@@ -16,4 +17,7 @@ class SchedulingModule {
 
         }
     }
+
+    @Provides
+    fun providesSyncScheduler() = SyncScheduler()
 }

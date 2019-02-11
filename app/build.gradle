@@ -40,9 +40,12 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.21'
     kapt 'com.google.dagger:dagger-compiler:2.21'
 
+    implementation 'android.arch.work:work-runtime:1.0.0-beta05'
+
     implementation project(':networking')
     implementation project(':presentation')
     implementation project(':database')
+    implementation project(':scheduling')
 
     testImplementation 'junit:junit:4.12'
 
