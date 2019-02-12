@@ -10,9 +10,8 @@ class ForecastDomainModule {
 
     @Provides
     fun provideReadForecastForPosition(
-            forecastRepository: ReadForecastForPosition.ForecastRepository,
-            taskScheduler: ReadForecastForPosition.TaskScheduler
-    ) : ReadForecastForPosition = ReadForecastForPosition(forecastRepository, taskScheduler)
+            forecastRepository: ReadForecastForPosition.ForecastRepository
+    ) : ReadForecastForPosition = ReadForecastForPosition(forecastRepository)
 
     @Provides
     fun providesReadLocationName(
