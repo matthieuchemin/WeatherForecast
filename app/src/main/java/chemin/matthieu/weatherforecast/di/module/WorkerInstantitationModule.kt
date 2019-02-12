@@ -5,7 +5,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.work.WorkerParameters
 import chemin.matthieu.domain.ReadForecastForAllFavoredLocation
 import chemin.matthieu.domain.SyncForecastForFavoredLocation
-import chemin.matthieu.scheduling.scheduler.SyncScheduler
+import chemin.matthieu.scheduling.scheduler.Scheduler
 import chemin.matthieu.scheduling.worker.NotificationWorker
 import chemin.matthieu.scheduling.worker.SyncWorker
 import dagger.Module
@@ -25,14 +25,14 @@ class WorkerInstantitationModule {
     fun providesNotificationWorker(
             context: Context,
             workerParameters: WorkerParameters,
-            syncScheduler: SyncScheduler,
+            scheduler: Scheduler,
             readForecastForAllFavoredLocation: ReadForecastForAllFavoredLocation,
             notificationManager: NotificationManagerCompat,
             notificationBuilder: NotificationWorker.NotificationBuilder
     ) = NotificationWorker(
             context,
             workerParameters,
-            syncScheduler,
+            scheduler,
             readForecastForAllFavoredLocation,
             notificationManager,
             notificationBuilder

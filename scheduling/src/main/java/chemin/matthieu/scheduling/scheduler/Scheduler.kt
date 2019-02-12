@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 private const val SYNC_TASK_TAG = "sync_task"
 private const val WORK_NAME = "sync_work"
 
-class SyncScheduler(private val nextNotificationTime: NextNotificationTime) {
+class Scheduler(private val nextNotificationTime: NextNotificationTime) {
 
     fun scheduleSync() {
         val syncConstraints = Constraints.Builder()

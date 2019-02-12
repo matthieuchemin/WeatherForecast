@@ -2,7 +2,7 @@ package chemin.matthieu.weatherforecast.di.module
 
 import chemin.matthieu.domain.NextNotificationTime
 import chemin.matthieu.domain.ReadForecastForPosition
-import chemin.matthieu.scheduling.scheduler.SyncScheduler
+import chemin.matthieu.scheduling.scheduler.Scheduler
 import dagger.Module
 import dagger.Provides
 
@@ -20,5 +20,5 @@ class SchedulingModule {
     }
 
     @Provides
-    fun providesSyncScheduler(nextNotificationTime: NextNotificationTime) = SyncScheduler(nextNotificationTime)
+    fun providesSyncScheduler(nextNotificationTime: NextNotificationTime) = Scheduler(nextNotificationTime)
 }

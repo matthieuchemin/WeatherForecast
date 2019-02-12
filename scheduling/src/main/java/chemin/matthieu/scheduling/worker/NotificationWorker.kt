@@ -8,7 +8,7 @@ import androidx.work.WorkerParameters
 import chemin.matthieu.commontools.e
 import chemin.matthieu.domain.ReadForecastForAllFavoredLocation
 import chemin.matthieu.entities.ForecastOverview
-import chemin.matthieu.scheduling.scheduler.SyncScheduler
+import chemin.matthieu.scheduling.scheduler.Scheduler
 import timber.log.Timber
 
 private const val TAG = "NotificationWorker"
@@ -16,7 +16,7 @@ private const val TAG = "NotificationWorker"
 class NotificationWorker(
         context: Context,
         workerParameters: WorkerParameters,
-        private val syncScheduler: SyncScheduler,
+        private val scheduler: Scheduler,
         private val readForecastForAllFavoredLocation: ReadForecastForAllFavoredLocation,
         private val notificationManager: NotificationManagerCompat,
         private val notificationBuilder: NotificationBuilder
@@ -35,7 +35,7 @@ class NotificationWorker(
                         notificationManager.notify(it.locationId.toInt(), notification)
                     }
                 }
-                syncScheduler.scheduleNotifications()
+                scheduler.scheduleNotifications()
                 Result.success()
             } catch (e: Exception) {
                 Timber.e(TAG, e)
