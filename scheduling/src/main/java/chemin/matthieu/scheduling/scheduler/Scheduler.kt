@@ -9,7 +9,10 @@ import java.util.concurrent.TimeUnit
 private const val SYNC_TASK_TAG = "sync_task"
 private const val WORK_NAME = "sync_work"
 
-class Scheduler(private val nextNotificationTime: NextNotificationTime) {
+class Scheduler(
+        private val nextNotificationTime: NextNotificationTime,
+        private val workManager: WorkManager
+) {
 
     fun scheduleSync() {
         val syncConstraints = Constraints.Builder()
@@ -25,7 +28,7 @@ class Scheduler(private val nextNotificationTime: NextNotificationTime) {
 
         val syncWork = syncBuilder.build()
 
-        WorkManager.getInstance().enqueueUniquePeriodicWork(WORK_NAME, ExistingPeriodicWorkPolicy.REPLACE, syncWork)
+        workManager.enqueueUniquePeriodicWork(WORK_NAME, ExistingPeriodicWorkPolicy.REPLACE, syncWork)
     }
 
     fun scheduleNotifications() {
@@ -36,7 +39,7 @@ class Scheduler(private val nextNotificationTime: NextNotificationTime) {
         val notificationBuilder = OneTimeWorkRequest.Builder(NotificationWorker::class.java)
                 .setInitialDelay(delay, TimeUnit.MILLISECONDS)
 
-        WorkManager.getInstance().enqueue(notificationBuilder.build())
+        workManager.enqueue(notificationBuilder.build())
     }
 
 }

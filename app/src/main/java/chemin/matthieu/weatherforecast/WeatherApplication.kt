@@ -1,10 +1,8 @@
 package chemin.matthieu.weatherforecast
 
-import androidx.work.Configuration
-import androidx.work.WorkManager
-import chemin.matthieu.weatherforecast.tools.WeatherWorkerFactory
 import chemin.matthieu.scheduling.scheduler.Scheduler
 import chemin.matthieu.weatherforecast.di.component.DaggerApplicationComponent
+import chemin.matthieu.weatherforecast.tools.WeatherWorkerFactory
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import timber.log.Timber
@@ -22,19 +20,9 @@ class WeatherApplication : DaggerApplication() {
     @Inject
     lateinit var scheduler: Scheduler
 
-    @Inject
-    lateinit var weatherWorkerFactory: WeatherWorkerFactory
-
     override fun onCreate() {
         super.onCreate()
         trees.forEach { Timber.plant(it) }
-        WorkManager.initialize(
-                this,
-                Configuration.Builder().let {
-                    it.setWorkerFactory(weatherWorkerFactory)
-                    it.build()
-                }
-        )
         scheduler.scheduleSync()
         scheduler.scheduleNotifications()
     }
